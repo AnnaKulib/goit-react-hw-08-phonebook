@@ -1,16 +1,23 @@
-export const App = () => {
+import { useGetContactsQuery } from 'services/contactsApi';
+// import { Route, Routes } from "react-router-dom";
+
+import Section from './Section';
+import ContactForm from './ContactForm';
+import ContactList from './ContactList';
+import Filter from './Filter';
+import Loader from './Loader';
+
+const App = () => {
+  const { isFetching } = useGetContactsQuery();
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Section>
+      <ContactForm />
+      <Filter />
+      {isFetching && <Loader />}
+      <ContactList />
+    </Section>
   );
 };
+
+export default App;

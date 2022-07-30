@@ -28,6 +28,7 @@
   border-radius: 0.25rem;
   transition: background-color 0.15s ease-in-out;
 }
+
 .button:hover {
   color: #ffffff;
   background-color: #4a1ded;

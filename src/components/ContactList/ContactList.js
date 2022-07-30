@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-import { getFilter } from 'components/redux/selectors';
-import { useGetContactsQuery } from 'services/contactsApi';
+import { getFilter } from 'redux/contacts/selectors';
+import { useGetContactsQuery } from 'redux/contacts/contactsOperation';
 import ContactItem from 'components/ContactItem';
 import s from './ContactList.module.css';
 
-const ContactList = () => {
+function ContactList() {
   const { data } = useGetContactsQuery();
   const filter = useSelector(getFilter);
 
@@ -33,13 +33,13 @@ const ContactList = () => {
     <>
       {contacts && (
         <ul className={s.list}>
-          {contacts.map(({ id, name, phone }) => (
-            <ContactItem key={id} contact={{ id, name, phone }} />
+          {contacts.map(({ id, name, number }) => (
+            <ContactItem key={id} id={id} name={name} number={number} />
           ))}
         </ul>
       )}
     </>
   );
-};
+}
 
 export default ContactList;

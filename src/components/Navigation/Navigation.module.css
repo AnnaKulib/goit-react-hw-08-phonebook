@@ -1,0 +1,10 @@
+.link {
+  text-decoration: none;
+  padding: 10px;
+}
+
+.active {
+  composes: link;
+  color: #06148e;
+  font-size: large;
+}
